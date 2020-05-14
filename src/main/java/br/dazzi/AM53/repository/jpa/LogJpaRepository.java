@@ -19,7 +19,7 @@ public class LogJpaRepository implements LogRepository {
 
     @Override
     public Set<Logs> listByIpAndDateBetweenStartAndEnd(ZonedDateTime startDate, ZonedDateTime endDate, String ip) {
-        return null;
+        return null;//implementar filtro
     }
 
     @Override
@@ -47,5 +47,14 @@ public class LogJpaRepository implements LogRepository {
     @Override
     public Logs find(Long id) {
         return entityManager.find(Logs.class, id);
+    }
+
+    @Override
+    public Set<Logs> findAll() {
+        return Set.copyOf(
+                entityManager
+                        .createQuery("select l from Logs l where 1=1", Logs.class)
+                        .getResultList()
+        );
     }
 }
