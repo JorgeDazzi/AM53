@@ -4,6 +4,7 @@ package br.dazzi.AM53.controller.batch;
 import br.dazzi.AM53.domain.entity.Logs;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -15,8 +16,8 @@ public class ConvertToLogList {
     private String delimiter = "\\|";
 
     public ZonedDateTime getDate(){
-        LocalDate d = LocalDate.parse(columns[0],formatter);
-        return d.atStartOfDay(ZoneId.systemDefault());
+        LocalDateTime d = LocalDateTime.parse(columns[0], formatter);
+        return d.atZone(ZoneId.systemDefault());
     }
 
     public String getIp(){
