@@ -3,7 +3,6 @@ package br.dazzi.AM53.controller.batch;
 
 import br.dazzi.AM53.domain.entity.Logs;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;

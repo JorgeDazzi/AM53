@@ -2,11 +2,8 @@ package br.dazzi.AM53.domain.entity;
 
 import lombok.Data;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
-import javax.validation.constraints.NotNull;
+import javax.persistence.*;
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
 @Data
@@ -17,6 +14,10 @@ public class EntityDefault {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
     private ZonedDateTime date;
+
+    @PostPersist
+    public void PostPersistDate(){
+        if(this.date == null) this.setDate(ZonedDateTime.now(ZoneId.systemDefault()));
+    }
 }

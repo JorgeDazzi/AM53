@@ -36,7 +36,7 @@ public class Logs extends EntityDefault{
     }
 
     public Logs(@NotNull String ip, String request, @NotNull int status, String userAgent) {
-        this.setDate(ZonedDateTime.now(ZoneId.systemDefault()));
+        this.setDate(null);
         this.ip = ip;
         this.request = request;
         this.status = status;
