@@ -32,4 +32,10 @@ public class LogController {
         return new ResponseEntity<>(logService.add(log), HttpStatus.CREATED);
     }
 
+    @DeleteMapping(path = "/{id}" )
+    public @ResponseBody ResponseEntity<Object> remove(@PathVariable Long id){
+        logService.remove(logService.find(id));
+        return new ResponseEntity<>(null, HttpStatus.OK);
+    }
+
 }
