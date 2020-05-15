@@ -2,6 +2,7 @@ package br.dazzi.AM53.service;
 
 import br.dazzi.AM53.domain.entity.Logs;
 
+import java.util.List;
 import java.util.Set;
 
 public interface LogService {
@@ -15,4 +16,6 @@ public interface LogService {
     public void remove(Logs id);
 
     public Logs add(Logs log);
+
+    public void add(List<Logs> log);
 }

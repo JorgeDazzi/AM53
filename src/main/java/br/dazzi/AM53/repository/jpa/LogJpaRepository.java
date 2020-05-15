@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.time.ZonedDateTime;
+import java.util.List;
 import java.util.Set;
 
 @Repository
@@ -20,6 +21,12 @@ public class LogJpaRepository implements LogRepository {
     @Override
     public Set<Logs> listByIpAndDateBetweenStartAndEnd(ZonedDateTime startDate, ZonedDateTime endDate, String ip) {
         return null;//implementar filtro
+    }
+
+    @Override
+    @Transactional
+    public void add(List<Logs> logs) {
+        logs.forEach(log -> entityManager.persist(log));
     }
 
     @Override

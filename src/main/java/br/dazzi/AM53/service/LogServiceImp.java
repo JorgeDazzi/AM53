@@ -6,6 +6,7 @@ import br.dazzi.AM53.repository.jpa.LogJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -45,5 +46,10 @@ public class LogServiceImp implements  LogService{
     @Override
     public Logs add(Logs log) {
         return logJpaRepository.add(log);
+    }
+
+    @Override
+    public void add(List<Logs> logs) {
+        logJpaRepository.add(logs);
     }
 }
