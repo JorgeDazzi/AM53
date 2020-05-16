@@ -1,5 +1,6 @@
 package br.dazzi.AM53.domain.entity;
 
+import br.dazzi.AM53.settings.DateFomatter;
 import lombok.Data;
 
 import javax.persistence.*;

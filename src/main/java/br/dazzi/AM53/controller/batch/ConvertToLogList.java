@@ -2,21 +2,20 @@ package br.dazzi.AM53.controller.batch;
 
 
 import br.dazzi.AM53.domain.entity.Logs;
+import br.dazzi.AM53.settings.DateFomatter;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class ConvertToLogList {
 
     private String[] columns;
-    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
     private String delimiter = "\\|";
 
     public ZonedDateTime getDate(){
-        LocalDateTime d = LocalDateTime.parse(columns[0], formatter);
-        return d.atZone(ZoneId.systemDefault());
+        LocalDateTime date = LocalDateTime.parse(columns[0], DateFomatter.AM53_FORMATTER);
+        return date.atZone(ZoneId.systemDefault());
     }
 
     public String getIp(){
