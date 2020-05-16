@@ -1,5 +1,7 @@
 package br.dazzi.AM53.controller;
 
+import br.dazzi.AM53.controller.request.LogRequest;
+import br.dazzi.AM53.controller.request.converter.LogRequestToLogEntity;
 import br.dazzi.AM53.controller.response.LogResponse;
 import br.dazzi.AM53.controller.response.converter.LogEntityToResponse;
 import br.dazzi.AM53.domain.entity.Logs;
@@ -38,11 +40,11 @@ public class LogController {
 
     @PostMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    ResponseEntity<LogResponse> add(@RequestBody @Validated Logs log){
+    ResponseEntity<LogResponse> add(@RequestBody @Validated LogRequest logRequest){
 
         return new ResponseEntity<>(
                 new LogEntityToResponse()
-                        .converter(logService.add(log)),
+                        .converter(logService.add(new LogRequestToLogEntity().converter(logRequest))),
                 HttpStatus.CREATED
         );
     }
