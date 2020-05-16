@@ -10,6 +10,7 @@ import java.time.ZoneId;
 public class LogRequestToLogEntity {
     public Logs converter(LogRequest logRequest){
         return new Logs(
+                logRequest.id(),
                 logRequest.date() == null ? null : LocalDateTime.parse(logRequest.date(), DateFomatter.AM53_FORMATTER).atZone(ZoneId.systemDefault()),
                 logRequest.ip(),
                 logRequest.request(),

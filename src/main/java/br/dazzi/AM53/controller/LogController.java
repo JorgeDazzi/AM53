@@ -56,9 +56,9 @@ public class LogController {
     }
 
     @PutMapping(path = "/", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody ResponseEntity<Object> update(@RequestBody @Validated Logs log){
-        logService.update(log);
-        return new ResponseEntity<>(null, HttpStatus.CREATED);
+    public @ResponseBody ResponseEntity<Object> update(@RequestBody @Validated LogRequest logRequest){
+        logService.update(new LogRequestToLogEntity().converter(logRequest));
+        return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
 }

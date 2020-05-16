@@ -40,6 +40,13 @@ public class Logs extends EntityDefault{
         this.request = request;
         this.status = status;
         this.userAgent = userAgent;
-        //https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/time/format/DateTimeFormatter.html
+    }
+    public Logs(@NotNull Long id,ZonedDateTime date, @NotNull String ip, String request, @NotNull int status, String userAgent) {
+        this.setId(id);
+        this.setDate(date);
+        this.ip = ip;
+        this.request = request;
+        this.status = status;
+        this.userAgent = userAgent;
     }
 }
