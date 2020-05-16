@@ -37,6 +37,16 @@ public class LogController {
         );
     }
 
+    @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody
+    ResponseEntity<LogResponse> find(@PathVariable Long id){
+
+        return new ResponseEntity<>(
+                new LogEntityToResponse().converter(logService.find(id)),
+                HttpStatus.OK
+        );
+    }
+
 
     @PostMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
