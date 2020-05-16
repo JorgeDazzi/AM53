@@ -9,6 +9,8 @@ import java.util.List;
 
 public class LogEntityToResponse {
     public LogResponse converter(Logs log){
+        if(log == null) return null;
+
         return new LogResponse()
                 .id(log.getId())
                 .date(log.getDate().format(DateFomatter.AM53_FORMATTER))

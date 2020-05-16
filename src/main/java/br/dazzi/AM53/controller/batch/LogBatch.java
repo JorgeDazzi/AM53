@@ -10,12 +10,12 @@ import java.util.Scanner;
 public class LogBatch {
 
     private List<Logs> logsList = new ArrayList<>();
-    private Scanner buffer;
+    private Scanner scanner;
 
     public List<Logs> getLogsList(){
-        while(this.buffer.hasNext()){
+        while(this.scanner.hasNext()){
             this.logsList.add(
-                    new ConvertToLogList(this.buffer.nextLine())
+                    new ConvertToLogList(this.scanner.nextLine())
                             .getLog()
             );
         }
@@ -24,6 +24,6 @@ public class LogBatch {
 
 
     public LogBatch(InputStream file) {
-        this.buffer = new Scanner(file);
+        this.scanner = new Scanner(file);//Verificar fileReader
     }
 }

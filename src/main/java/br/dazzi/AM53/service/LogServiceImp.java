@@ -22,7 +22,11 @@ public class LogServiceImp implements  LogService{
 
     @Override
     public Logs find(Long id) {
-        return logJpaRepository.find(id);
+        Logs entity = logJpaRepository.find(id);
+        if(entity == null){
+            throw new NotFoundException("Log was not found");
+        }
+        return entity;
     }
 
     @Override
