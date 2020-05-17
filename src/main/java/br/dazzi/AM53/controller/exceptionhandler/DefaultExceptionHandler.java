@@ -53,7 +53,7 @@ public class DefaultExceptionHandler {
 
         return new ResponseEntity<>(
                 new ErrorResponse(msgs),
-                HttpStatus.UNPROCESSABLE_ENTITY
+                HttpStatus.BAD_REQUEST
         );
     }
 
@@ -69,7 +69,7 @@ public class DefaultExceptionHandler {
 
         return new ResponseEntity<>(
                 new ErrorResponse(msgs),
-                HttpStatus.UNPROCESSABLE_ENTITY
+                HttpStatus.BAD_REQUEST
         );
     }
 

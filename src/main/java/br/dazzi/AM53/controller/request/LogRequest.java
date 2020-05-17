@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import javax.persistence.Column;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -35,6 +36,7 @@ public class LogRequest {
 
     @JsonProperty(value = "user_agent")
     @Size(max = 255, message = "Field user_agent must have between 1 and 255 characters.")
+    @NotEmpty(message = "Field user_agent must have between 1 and 255 characters.")
     private String userAgent;
 
 }
