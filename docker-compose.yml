@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  db_postgres:
+    build:
+      context: ./
+      dockerfile: ./docker/database/Dockerfile
+    environment:
+      POSTGRES_USER: "root"
+      POSTGRES_PASSWORD: "password"
+      POSTGRES_DB: "AM53"
+    ports:
+      - "5432:5432"
+    networks:
+      - default_network
+    healthcheck:
+      test: ["CMD", "telnet", "localhost", "5432"]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+
+#  service_spring_app:
+#    build:
+#      context: ./
+#      dockerfile: ./docker/application/Dockerfile
+#    restart: on-failure
+#    ports:
+#      - 8080:8080
+#    networks:
+#      - default_network
+#    environment:
+#      WAIT_HOSTS: mysql:3306
+#    depends_on:
+#      - service_database
+
+
+networks:
+  default_network:
