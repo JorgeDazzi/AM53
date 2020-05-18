@@ -2,6 +2,7 @@ version: '3'
 
 services:
   db_postgres:
+    container_name: db_postgres
     build:
       context: ./
       dockerfile: ./docker/database/Dockerfile
@@ -19,19 +20,20 @@ services:
       timeout: 10s
       retries: 10
 
-#  service_spring_app:
-#    build:
-#      context: ./
-#      dockerfile: ./docker/application/Dockerfile
-#    restart: on-failure
-#    ports:
-#      - 8080:8080
-#    networks:
-#      - default_network
-#    environment:
-#      WAIT_HOSTS: mysql:3306
-#    depends_on:
-#      - service_database
+  service_spring_app:
+    container_name: spring_app
+    build:
+      context: ./
+      dockerfile: ./docker/application/Dockerfile
+    restart: on-failure
+    ports:
+      - 8080:8080
+    networks:
+      - default_network
+    environment:
+      WAIT_HOSTS: postgres:5432
+    depends_on:
+      - db_postgres
 
 
 networks:
