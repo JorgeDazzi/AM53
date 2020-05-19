@@ -14,7 +14,9 @@ Back-End
 PosgresSQL Schema
 -------
 
-###### Log
+![Postgres SQL Schema](link-to-image)
+
+
 ```postgres-sql
 CREATE TABLE IF NOT EXISTS logs(
   id bigserial PRIMARY KEY,
