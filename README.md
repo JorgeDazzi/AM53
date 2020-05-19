@@ -14,7 +14,7 @@ Back-End
 PosgresSQL Schema
 -------
 
-![Postgres SQL Schema](https://github.com/JorgeDazzi/AM53/blob/master/postgres-schema.png?raw=true)
+![Postgres SQL Schema](https://drive.google.com/file/d/1jr416PTNze4c2XwiF8aebYFX81RqLaGX/preview)
 
 
 ```postgres-sql
