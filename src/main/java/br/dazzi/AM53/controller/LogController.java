@@ -6,6 +6,7 @@ import br.dazzi.AM53.controller.response.LogResponse;
 import br.dazzi.AM53.controller.response.converter.LogEntityToResponse;
 import br.dazzi.AM53.domain.entity.Logs;
 import br.dazzi.AM53.service.LogService;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,7 +18,7 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
-@RequestMapping("logs/")
+@RequestMapping("api/logs/")
 @CrossOrigin(value = "*")
 public class LogController {
 
@@ -49,6 +50,7 @@ public class LogController {
 
 
     @PostMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ApiResponse(responseCode = "201")
     public @ResponseBody
     ResponseEntity<LogResponse> add(@RequestBody @Validated LogRequest logRequest){
 

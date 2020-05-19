@@ -3,6 +3,7 @@ package br.dazzi.AM53.controller;
 import br.dazzi.AM53.controller.batch.LogBatch;
 import br.dazzi.AM53.domain.entity.Logs;
 import br.dazzi.AM53.service.LogService;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -14,7 +15,7 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
-@RequestMapping("batch/")
+@RequestMapping("api/batch/")
 @CrossOrigin(value = "*")
 public class BatchController {
 
@@ -22,6 +23,7 @@ public class BatchController {
     LogService logService;
 
     @PostMapping(path = "/", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @ApiResponse(responseCode = "201")
     public @ResponseBody
     ResponseEntity<Object> batch(@RequestParam("file") MultipartFile filedate) throws IOException {
 

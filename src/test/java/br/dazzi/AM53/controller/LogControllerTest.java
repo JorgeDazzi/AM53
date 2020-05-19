@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class LogControllerTest {
 
-    private final static String URI = "/logs";
+    private final static String URI = "/api/logs";
 
     @Autowired
     private WebApplicationContext wac;
