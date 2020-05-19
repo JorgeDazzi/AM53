@@ -1,7 +1,7 @@
 FROM gradle:6.3.0-jdk13 AS build
 ADD  . /home/AM53
 WORKDIR /home/AM53
-RUN gradle build --no-daemon --stacktrace
+RUN gradle build --stacktrace
 
 FROM openjdk:13-jdk-alpine
 EXPOSE 8080
