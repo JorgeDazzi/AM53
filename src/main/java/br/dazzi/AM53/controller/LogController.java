@@ -1,5 +1,6 @@
 package br.dazzi.AM53.controller;
 
+import br.dazzi.AM53.controller.request.LogIpAndIntervalDateRequest;
 import br.dazzi.AM53.controller.request.LogRequest;
 import br.dazzi.AM53.controller.request.converter.LogRequestToLogEntity;
 import br.dazzi.AM53.controller.response.LogResponse;
@@ -14,6 +15,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.NotEmpty;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Set;
 
@@ -33,6 +36,25 @@ public class LogController {
                 new LogEntityToResponse()
                         .converter(
                                 List.copyOf(logService.findAll())
+                        ),
+                HttpStatus.OK
+        );
+    }
+
+    @GetMapping(path = "/search/basic", produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody
+    ResponseEntity<List<LogResponse>> listByIpAndDateBetweenStartAndEnd(
+            @RequestParam String start_date,
+            @RequestParam String end_date,
+            @RequestParam String ip
+    ){
+
+        LogIpAndIntervalDateRequest filter = new LogIpAndIntervalDateRequest(start_date,end_date,ip);
+
+        return new ResponseEntity<>(
+                new LogEntityToResponse()
+                        .converter(
+                                List.copyOf(logService.listByIpAndDateBetweenStartAndEnd(filter.getStartDate(), filter.getEndDate(), filter.ip()))
                         ),
                 HttpStatus.OK
         );

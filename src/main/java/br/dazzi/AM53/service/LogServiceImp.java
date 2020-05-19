@@ -6,6 +6,7 @@ import br.dazzi.AM53.repository.jpa.LogJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Set;
 
@@ -55,5 +56,10 @@ public class LogServiceImp implements  LogService{
     @Override
     public void add(List<Logs> logs) {
         logJpaRepository.add(logs);
+    }
+
+    @Override
+    public Set<Logs> listByIpAndDateBetweenStartAndEnd(ZonedDateTime startDate, ZonedDateTime endDate, String ip) {
+        return logJpaRepository.listByIpAndDateBetweenStartAndEnd(startDate, endDate, ip);
     }
 }

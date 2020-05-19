@@ -20,7 +20,13 @@ public class LogJpaRepository implements LogRepository {
 
     @Override
     public Set<Logs> listByIpAndDateBetweenStartAndEnd(ZonedDateTime startDate, ZonedDateTime endDate, String ip) {
-        return null;//implementar filtro
+        return Set.copyOf(
+                entityManager.createQuery("select l from Logs l where l.ip = :ip and l.date between :start_date and :end_date", Logs.class)
+                        .setParameter("ip", ip)
+                        .setParameter("start_date", startDate)
+                        .setParameter("end_date", endDate)
+                .getResultList()
+        );
     }
 
     @Override
